@@ -3,6 +3,8 @@
 {% block title %}Blog page{% endblock title %}
 {% block content %}
 <div>
-    hey
+    {% for data in data %}
+    <div>{{ data.title }}</div>
+    {% endfor %}
 </div>
 {% endblock content %}
