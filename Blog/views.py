@@ -13,7 +13,7 @@ def BlogList(request):
 
 
 def BlogDetails(request, pk):
-    data = get_object_or_404(Blog, pk)
+    data = get_object_or_404(Blog, pk=pk)
     context = {
         'data':data
     }

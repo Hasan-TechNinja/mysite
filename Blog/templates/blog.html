@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Blog page{% endblock title %}
+
 {% block content %}
 <div>
     {% for data in data %}
-    <div>Blog Title: {{ data.title }}</div>
+    <a href="{% url "details" data.id %}">Blog Title: {{ blog.title }}</a>
     <div>Blog Slug: {{ data.slug }}</div>
     <div>Blog Body: {{ data.body }}</div>
     <div>Blog Created: {{ data.created }}</div>
     <div>Blog Updated: {{ data.updated }}</div>
     <div>Blog Status: {{ data.status }}</div> <br>
+    
     {% endfor %} 
 </div>
 {% endblock content %}
