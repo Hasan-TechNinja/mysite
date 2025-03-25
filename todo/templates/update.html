@@ -6,3 +6,16 @@
         </li>
     </ul>
 </nav>
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for form in form %}
+        <p>
+            {{ form.label_tag }}
+            {{ form }}
+        </p>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</div>

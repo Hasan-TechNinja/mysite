@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . models import Database
 from . forms import DatabaseForm
 
@@ -13,12 +13,12 @@ def show(request):
 
 
 
-def details(request, pk):
+def detailsView(request, pk):
     data = Database.objects.get(id = pk)
     context = {
         'data':data
     }
-    return render(request, 'details.html', context)
+    return render(request, 'Tdetails.html', context)
 
 
 
@@ -41,6 +41,21 @@ def create(request):
 
 
 
-def update(request):
-    return render(request, 'update.html')
+def update(request, pk):
+    data = get_object_or_404(Database, id = pk)
+
+    if request.method == 'POST':
+        form = DatabaseForm(request.POST, instance=data)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+        pass
+    form = DatabaseForm(instance=data)
+
+
+    context = {
+        'form':form
+    }
+
+    return render(request, 'update.html', context)
 
