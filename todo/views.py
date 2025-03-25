@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from . models import Database
 from . forms import DatabaseForm
 
+
 # Create your views here.
 
 def show(request):
@@ -59,3 +60,9 @@ def update(request, pk):
 
     return render(request, 'update.html', context)
 
+
+
+def deleteView(request, pk):
+    data = get_object_or_404(Database, id = pk)
+    data.delete()
+    return redirect('home')
