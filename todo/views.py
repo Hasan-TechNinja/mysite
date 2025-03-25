@@ -12,16 +12,12 @@ def show(request):
     }
     return render(request, 'show.html', context)
 
-
-
 def detailsView(request, pk):
     data = Database.objects.get(id = pk)
     context = {
         'data':data
     }
     return render(request, 'Tdetails.html', context)
-
-
 
 def create(request):
     if request.method == 'POST':
@@ -40,8 +36,6 @@ def create(request):
 
     return render(request, 'create.html', context)
 
-
-
 def update(request, pk):
     data = get_object_or_404(Database, id = pk)
 
@@ -59,8 +53,6 @@ def update(request, pk):
     }
 
     return render(request, 'update.html', context)
-
-
 
 def deleteView(request, pk):
     data = get_object_or_404(Database, id = pk)
