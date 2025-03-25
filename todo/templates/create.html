@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Create{% endblock title %}
+{% block content %}
+<nav>
+    <ul>
+        <li>
+            <a href="{% url "home" %}">Home</a>
+            <a href="{% url "create" %}">Create</a>
+        </li>
+    </ul>
+</nav>
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for form in form %}
+        <p>
+            {{form.label_tag}}
+            {{form}}
+        </p>
+        {% if form.errors %}
+        <p>{{form.errors}}</p>
+        {% endif %}
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock content %}
