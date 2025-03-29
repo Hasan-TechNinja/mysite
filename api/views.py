@@ -54,7 +54,7 @@ class TodoAPIDetails(APIView):
             return Response(serializer.errors)
         
         
-    def delte(self, request, pk):
+    def delete(self, request, pk):
         data = Database.objects.get(pk = pk)
         data.delete()
         return Response(status=status.HTTP_200_OK)
